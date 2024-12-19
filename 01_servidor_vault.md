@@ -62,12 +62,7 @@ vault operator init -key-shares=1 -key-threshold=1
 vault operator unseal
 ```
 
-Configurar el token en una variable de entorno:
-
-```shell
-export VAULT_TOKEN=<root_token>
-echo "export VAULT_TOKEN=$VAULT_TOKEN" >> /root/.profile
-```
+Copiar el token de `root` al fichero `.env` y volver a iniciar el `workspace`.
 
 ## Prueba
 
