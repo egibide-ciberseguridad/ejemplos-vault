@@ -24,31 +24,19 @@ vault write auth/userpass/users/egibide password=12345Abcde
 Crear la política de acceso.
 
 ```shell
-cat > egibide-use-secretos-policy.hcl <<EOF
-path "secretos/data/*" {
-  capabilities = ["create", "update", "read", "delete"]
-}
-path "secretos/delete/*" {
-  capabilities = ["update"]
-}
-path "secretos/metadata/*" {
-  capabilities = ["list", "read", "delete"]
-}
-path "secretos/destroy/*" {
-  capabilities = ["update"]
-}
-path "secretos/metadata" {
-  capabilities = ["list"]
+cat > egibide-secretos-policy.hcl <<EOF
+path "secretos/*" {
+  capabilities = ["list", "create", "update", "read", "delete"]
 }
 EOF
 
-vault policy write egibide-use-secretos egibide-use-secretos-policy.hcl
+vault policy write egibide-secretos egibide-secretos-policy.hcl
 ```
 
 Aplicar la política al usuario.
 
 ```shell
-vault write auth/userpass/users/egibide/policies policies=egibide-use-secretos
+vault write auth/userpass/users/egibide/policies policies=egibide-secretos
 ```
 
 Leer el secreto.
