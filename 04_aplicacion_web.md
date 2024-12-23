@@ -6,7 +6,7 @@ Crear la base de datos para la aplicación:
 mariadb -u root -p12345Abcde
 ```
 
-```text
+```mariadb
 CREATE DATABASE blog;
 ```
 
@@ -33,6 +33,11 @@ Obtener el token del usuario:
 ```shell
 unset VAULT_TOKEN
 vault login -method=userpass username=egibide password=12345Abcde
+```
+
+Si ya tenemos la sesión iniciada:
+
+```shell
 vault token lookup
 ```
 
